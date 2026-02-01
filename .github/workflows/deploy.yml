@@ -12,11 +12,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repo's submodule
-        uses: actions/checkout@v4
+      - name: Checkout private repo
+        uses: actions/checkout@v6
         with:
-          ref: main
-          submodules: recursive
+          repository: geoochi/log
+          token: ${{ secrets.GH_PAT }}
+          path: log
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
