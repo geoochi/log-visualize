@@ -24,7 +24,7 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: log
       - name: Upload artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-pages-artifact@v4
         with:
           path: log/dist
       - name: Deploy to GitHub Pages
