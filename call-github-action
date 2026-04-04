@@ -3,5 +3,12 @@
 localPath=$(dirname $(realpath $0))
 cd $localPath
 
+if !(git pull -q); then
+    tmp_branch="tmp-$(date +%Y%m%d-%H%M%S)"
+    git checkout -b $tmp_branch
+    git push --set-upstream origin $tmp_branch
+    git checkout main
+    git reset --hard origin/main
+fi
 git commit --allow-empty -m "call github action"
 git push
