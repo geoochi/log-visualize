@@ -1,0 +1,7 @@
+#!/bin/sh
+
+localPath=$(dirname $(realpath $0))
+cd $localPath
+
+git commit --allow-empty -m "call github action"
+git push
